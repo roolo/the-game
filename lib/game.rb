@@ -88,14 +88,18 @@ class Game < Gosu::Window
 
   # Called for every frame
   def update
-    if button_down? Gosu::KbLeft or button_down? Gosu::GpLeft then
-      @player.move_left
-    end
-    if button_down? Gosu::KbRight or button_down? Gosu::GpRight then
-      @player.move_right
-    end
+    @player.shape.body.reset_forces
+
+    6.times do
+      if button_down? Gosu::KbLeft or button_down? Gosu::GpLeft then
+        @player.move_left
+      end
+      if button_down? Gosu::KbRight or button_down? Gosu::GpRight then
+        @player.move_right
+      end
 
     @space.step 1.0/30.0
+    end
   end
 
   # Draws screen
