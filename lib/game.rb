@@ -3,7 +3,6 @@ require 'chipmunk'
 require_relative './game/player'
 require_relative './game/tools'
 
-# @todo Slow down the player movement
 class Game < Gosu::Window
   attr_accessor :space
   def initialize width=640, height=480
@@ -97,8 +96,18 @@ class Game < Gosu::Window
       if button_down? Gosu::KbRight or button_down? Gosu::GpRight then
         @player.move_right
       end
+      #if button_down? Gosu::KbUp or button_down? Gosu::GpRight then
+      #  @player.shape.body.a += 0.1
+      #
+      #  puts @player.shape.body.a.inspect
+      #end
+      #if button_down? Gosu::KbDown or button_down? Gosu::GpRight then
+      #  @player.shape.body.a -= 0.1
+      #  puts @player.shape.body.a.inspect
+      #end
 
-    @space.step 1.0/30.0
+
+      @space.step 1.0/10.0
     end
   end
 
